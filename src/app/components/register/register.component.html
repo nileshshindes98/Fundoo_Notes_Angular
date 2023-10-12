@@ -1,0 +1,100 @@
+<body>
+  <mat-card>
+    <div class="fix">
+      <div class="left-side">
+        <div>
+          <div class="Fundoo-Name">
+            <span style="color: #4285f4">F</span>
+            <span style="color: #ea4335">u</span>
+            <span style="color: #fbbc05">n</span>
+            <span style="color: #4285f4">d</span>
+            <span style="color: #34a853">o</span>
+            <span style="color: #ea4335">o</span>
+          </div>
+
+          <p>Create Your Google Account</p>
+        </div>
+
+        <form [formGroup]="signupForm">
+          <div style="display: flex">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input
+                formControlName="firstName"
+                matInput
+                placeholder="Enetr First Name"
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input
+                formControlName="lastName"
+                matInput
+                placeholder="Enetr Last Name"
+              />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="Email">
+            <mat-label>Enter Email</mat-label>
+            <input
+              formControlName="email"
+              matInput
+              placeholder="Ex. abc@fundoo.com"
+            />
+          </mat-form-field>
+          <mat-hint style="margin-left: 1%;">you can use letters numbers & periods</mat-hint>
+       
+          <div style="line-height: 2vh">
+            <div style="display: flex; align-items: center">
+              <mat-form-field appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input
+                  formControlName="password"
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                />
+                <mat-error >required password</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input
+                  formControlName="confirmPassword"
+                  placeholder="confirm Password"
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                />
+              </mat-form-field>
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </div>
+            <mat-hint style="margin-left: 1%"
+              >Use 8 or more characters with a mix of letters, numbers, &
+              symbols</mat-hint
+            >
+          </div>
+        </form>
+        <div style="display: flex; justify-content: space-between; padding: 1%">
+          <a routerLink="/">Sign In Instead</a>
+          <a mat-raised-button color="primary" target="_blank" (click)="onSubmit()">Next</a>
+        </div>
+      </div>
+     
+        <div class="right-side">
+          <img style="width: 210px" [src]="imageSrc" alt="Image" />
+        </div>
+      
+    </div>
+  </mat-card>
+</body>

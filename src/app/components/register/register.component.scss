@@ -1,0 +1,110 @@
+mat-card{
+    border: 1px solid black;
+    width: auto;
+    height: auto;  
+    padding: 10px;
+}
+
+@media (max-width :800px) {
+    mat-card{
+      width: 100%
+      
+    }
+    .left-side{
+        width: 100%;
+    }
+.fix{
+    display: flex;
+    justify-content: center;
+    // border: 1px solid red;
+    height: auto; 
+    width: 100%;    
+}
+.Fundoo-Name{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+}
+
+@media (max-width :600px) {
+    mat-card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        height: 100vh;
+        width: 100vw;
+        // border: 1px solid black;
+        
+    }
+    .fix{
+        // width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // border: 1px solid green;
+        margin-left: 35%;
+        // height: 100vh;
+        // width: 100vw;
+        
+    }
+    .right-side{
+        // border: 1px solid green;
+        width: 0;
+    }
+    img{   
+       display: none;
+    }
+    .left-side{
+        // border: 1px solid red;
+    //    width: 100%;
+       height: 100%;
+    }
+
+}
+
+
+body{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.Fundoo-Name{
+    font-size: 35px;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    padding-bottom: 20px;
+    // border: 1px solid black;
+}
+p{
+    font-size: 20px; 
+}
+
+
+.left-side{
+    // border: 1px solid blue;
+    width: 65%;
+    height: auto;
+    line-height: 50px;
+}
+
+mat-form-field{
+    width: 100%;
+    margin:0% 1%;
+    
+}
+.right-side{
+    width: 35%;
+    // border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+.fix{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: auto;
+}

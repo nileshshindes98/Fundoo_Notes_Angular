@@ -1,0 +1,44 @@
+<body>
+  
+  <mat-card>
+<div style="display: flex; flex-direction: column;  padding: 8%;">
+
+  <div style=" padding: 2%; margin: 5%; line-height: 6vh;display: flex; flex-direction: column; align-items: center;">
+      <div class="Fundoo-Name">
+        <span style="color: #4285f4">F</span>
+        <span style="color: #ea4335">u</span>
+        <span style="color: #fbbc05">n</span>
+        <span style="color: #4285f4">d</span>
+        <span style="color: #34a853">o</span>
+        <span style="color: #ea4335">o</span>
+  </div>
+
+      <p style="font-size: 25px; ">Login</p>
+      <p style="font-size: 20px; ">Sign In Your Fundoo Account</p>
+  </div>
+
+
+  <mat-form-field  appearance="outline">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="login-button" >
+    <p><a href="#underline">Forget Password</a></p>
+    <a mat-raised-button color="primary" href="https://www.google.com/" target="_blank">Login</a>
+  </div>
+<a routerLink="/signup">Create Account</a>
+</div>
+
+
+  </mat-card>
+</body>
