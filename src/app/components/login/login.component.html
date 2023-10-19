@@ -17,26 +17,27 @@
       <p style="font-size: 20px; ">Sign In Your Fundoo Account</p>
   </div>
 
-
+<form [formGroup]="loginForm">
   <mat-form-field  appearance="outline">
     <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <input formControlName="email" matInput placeholder="pat@example.com" required>
+    <mat-error></mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Enter your password</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
+    <input  formControlName="password" matInput [type]="hide ? 'password' : 'text'">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
+</form>
 
   <div class="login-button" >
-    <p><a href="#underline">Forget Password</a></p>
-    <a mat-raised-button color="primary" href="https://www.google.com/" target="_blank">Login</a>
+    <a routerLink="/resetPassword">Forget Password</a>
+    <button routerLink="/dashboard" mat-raised-button color="primary" (click)="onSubmit()" >Login</button>
   </div>
-<a routerLink="/signup">Create Account</a>
+<a routerLink='/signup'>Create Account</a>
 </div>
 
 
