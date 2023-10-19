@@ -30,6 +30,7 @@ import { CreateNoteComponent } from './components/create-note/create-note.compon
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { CardFooterComponent } from './components/card-footer/card-footer.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import {MatMenuModule} from '@angular/material/menu';
     CreateNoteComponent,
     GetAllNotesComponent,
     DisplayNotesComponent,
+    CardFooterComponent,
   ],
   imports: [
     AppRoutingModule,
