@@ -33,18 +33,15 @@ export class CreateNoteComponent {
     if (this.title && this.description) {
       this.note.addNotes(data).subscribe((response: any) => {
         console.log(response);
-        let message = "note created successfull";
+        let message = "note created successful";
         console.log(message);
         window.location.reload() 
       });
     }
   }
 
-  toggleSecondCard() {
-    this.isSecondCardOpen = !this.isSecondCardOpen;
-  }
   onButtonClick() {
     this.onSubmit();
-    this.toggleSecondCard();
+    this.isSecondCardOpen = !this.isSecondCardOpen
   }
 }

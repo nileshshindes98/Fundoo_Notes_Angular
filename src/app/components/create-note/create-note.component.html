@@ -1,6 +1,6 @@
 
 <div class="main-div"[class.open]="isSecondCardOpen" [class.closed]="!isSecondCardOpen">
-    <mat-card class="mat-card-1" (click)="toggleSecondCard()">
+    <mat-card class="mat-card-1" (click)="this.isSecondCardOpen = !this.isSecondCardOpen">
         <mat-card-content class="mat-card-content-1">Take a note...
             <div class="mat-card-1-icon">
                 <i class="fa-regular fa-square-check fa-lg"></i>
@@ -19,7 +19,8 @@
 
         <input [(ngModel)]="description" class="mat-card-2-description" placeholder="Take a note..">
 
-        <div class="mat-card-2-icon">
+        <app-card-footer from="create" (onClose)="onButtonClick()"></app-card-footer>
+        <!-- <div class="mat-card-2-icon">
             <div class="mat-card-2-left-icon">
                 <i class="fa-solid fa-bell fa-xl"></i>
                 <i class="fa-solid fa-user-plus fa-xl"></i>
@@ -34,9 +35,8 @@
                 </mat-menu>
             </div>
             <button mat-stroked-button (click)="onButtonClick()">close</button>
-        </div>
+        </div> -->
 
     </mat-card>
-
 </div>
 
