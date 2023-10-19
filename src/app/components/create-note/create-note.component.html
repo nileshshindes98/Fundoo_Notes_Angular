@@ -1,0 +1,42 @@
+
+<div class="main-div"[class.open]="isSecondCardOpen" [class.closed]="!isSecondCardOpen">
+    <mat-card class="mat-card-1" (click)="toggleSecondCard()">
+        <mat-card-content class="mat-card-content-1">Take a note...
+            <div class="mat-card-1-icon">
+                <i class="fa-regular fa-square-check fa-lg"></i>
+                <i class="fa-solid fa-paintbrush fa-lg"></i>
+                <i class="fa-regular fa-image fa-lg"></i>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mat-card-2" *ngIf="isSecondCardOpen">
+
+        <div class="mat-card-2-title">
+            <input [(ngModel)]="title" placeholder="Title">
+            <i class="fa-solid fa-thumbtack fa-xl" style="color: #5f5d5d;font-size:medium;"></i>
+        </div>
+
+        <input [(ngModel)]="description" class="mat-card-2-description" placeholder="Take a note..">
+
+        <div class="mat-card-2-icon">
+            <div class="mat-card-2-left-icon">
+                <i class="fa-solid fa-bell fa-xl"></i>
+                <i class="fa-solid fa-user-plus fa-xl"></i>
+                <i class="fa-solid fa-palette fa-xl"></i>
+                <i class="fa-solid fa-image fa-xl"></i>
+                <i class="fa-solid fa-folder-plus fa-xl"></i>
+                <i class="fa-solid fa-caret-down fa-2xl" [matMenuTriggerFor]="menu"></i>
+             
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>Add Drawing</button>
+                    <button mat-menu-item>Add Label</button>
+                </mat-menu>
+            </div>
+            <button mat-stroked-button (click)="onButtonClick()">close</button>
+        </div>
+
+    </mat-card>
+
+</div>
+
