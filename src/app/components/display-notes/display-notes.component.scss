@@ -1,29 +1,23 @@
 mat-card {
-    width: 25%;
+    width: 18vw;
     height: auto;
-    margin: 0% 1.5%;
+    margin: 20px 20px;
     border-color: #5f5d5d;
 }
 
-mat-card-content {
-    display: flex;
-    flex-direction: column;
-    padding: 0%;
-}
+// mat-card-content {
+//     display: flex;
+//     flex-direction: column;
+//     padding: 0%;
+// }
 
-mat-card-content input {
-    border: none;
-    outline: none;
-    font-size: 1.3em;
-    margin-bottom: 2vh;
-}
 
 .mat-card-icon {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0% 3%;
-    margin: 6% 0%;
+    padding: 0% 5.5%;
+    margin: 3vh 0vw;
     font-size: smaller;
     color: #5f5d5d;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NoteService } from '../../service/noteService/note.service';
-import { Output, EventEmitter } from '@angular/core';
+// import { Output, EventEmitter } from '@angular/core';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-create-note',
@@ -12,8 +13,7 @@ export class CreateNoteComponent {
 
   title: string = '';
   description: string = '';
-  @Output() createdNote = new EventEmitter<string>();
-//@output eventemitter
+ 
 
   constructor(private note: NoteService) { }
 
@@ -27,25 +27,17 @@ export class CreateNoteComponent {
       title: this.title,
       description: this.description,
     }
-    console.log(data)
+    // console.log(data)
     // this.token = localStorage.getItem('token');
-    console.log(" add note data ", data, );
+    // console.log(" add note data ", data,);
     if (this.title && this.description) {
       this.note.addNotes(data).subscribe((response: any) => {
         console.log(response);
         let message = "note created successfull";
         console.log(message);
-//emit the resopnse
-this.createdNote.emit(response);
-
-        this.title = " ";
-        this.description = "";
-
-        // window.location.reload()
-      })
-
+        window.location.reload() 
+      });
     }
-
   }
 
   toggleSecondCard() {

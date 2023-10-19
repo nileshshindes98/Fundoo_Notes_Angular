@@ -1,3 +1,4 @@
 <!-- (createdNote)="addNoteData($event)"  -->
 <app-create-note />
-<app-display-notes/>
+<app-display-notes [allNotes]="notesArray"
+style="display: flex; flex-wrap: wrap;justify-content: center;align-items: center;"></app-display-notes>

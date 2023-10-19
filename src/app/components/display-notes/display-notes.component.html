@@ -1,11 +1,10 @@
-
+<div  *ngFor="let note of allNotes">
     <mat-card>
-        <mat-card-content>
-            <input placeholder="Title">
-            <input placeholder="description">
-        </mat-card-content>
-
-        <div class="mat-card-icon" >
+        <mat-card-header>{{note.title}}</mat-card-header>
+        <mat-card-content>{{note.description}}</mat-card-content>
+       
+    <mat-card-footer  class="mat-card-icon">
+            
             <i class="fa-solid fa-bell fa-xl"></i>
             <i class="fa-solid fa-user-plus fa-xl" ></i>
             <i class="fa-solid fa-palette fa-xl"></i>
@@ -17,9 +16,9 @@
                 <button mat-menu-item>Add Drawing</button>
                 <button mat-menu-item>Add Label</button>
             </mat-menu>
-        </div>
-
+        
+    </mat-card-footer>
     </mat-card>
 
-
+</div>
 
