@@ -15,15 +15,18 @@
           <p>Create Your Google Account</p>
         </div>
 
-        <form [formGroup]="signupForm">
-          <div style="display: flex">
+        <form [formGroup]="signupForm">   
+          <!-- (ngSubmit)="onSubmit()" -->
+          <div class="FL-Name" style="display: flex">
             <mat-form-field appearance="outline">
               <mat-label>First Name</mat-label>
               <input
                 formControlName="firstName"
                 matInput
-                placeholder="Enetr First Name"
+                placeholder="Enter First Name"
               />
+            <mat-error >required first Name</mat-error>
+
             </mat-form-field>
 
             <mat-form-field appearance="outline">
@@ -31,25 +34,29 @@
               <input
                 formControlName="lastName"
                 matInput
-                placeholder="Enetr Last Name"
+                placeholder="Enter Last Name"
               />
+            <mat-error >required last Name</mat-error>
+
             </mat-form-field>
           </div>
 
           <mat-form-field appearance="outline" class="Email">
-            <mat-label>Enter Email</mat-label>
+            <mat-label>Enter email</mat-label>
             <input
               formControlName="email"
               matInput
               placeholder="Ex. abc@fundoo.com"
             />
+            <mat-error >required Email</mat-error>
+
           </mat-form-field>
           <mat-hint style="margin-left: 1%;">you can use letters numbers & periods</mat-hint>
        
           <div style="line-height: 2vh">
-            <div style="display: flex; align-items: center">
+            <div style="display: flex; align-items: center" class="P-CP">
               <mat-form-field appearance="outline">
-                <mat-label>Enter your password</mat-label>
+                <mat-label>password</mat-label>
                 <input
                   formControlName="password"
                   matInput
@@ -66,7 +73,9 @@
                   matInput
                   [type]="hide ? 'password' : 'text'"
                 />
+                <mat-error> Passwords do not match</mat-error>
               </mat-form-field>
+
               <button
                 mat-icon-button
                 matSuffix
@@ -83,6 +92,7 @@
               >Use 8 or more characters with a mix of letters, numbers, &
               symbols</mat-hint
             >
+            <mat-error *ngIf="signupForm.hasError('passwordMismatch')"></mat-error>
           </div>
         </form>
         <div style="display: flex; justify-content: space-between; padding: 1%">
