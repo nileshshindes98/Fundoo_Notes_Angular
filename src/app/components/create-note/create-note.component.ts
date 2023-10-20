@@ -1,47 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { NoteService } from '../../service/noteService/note.service';
-// import { Output, EventEmitter } from '@angular/core';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
-  styleUrls: ['./create-note.component.scss']
+  styleUrls: ['./create-note.component.scss'],
 })
 export class CreateNoteComponent {
   isSecondCardOpen: boolean = false;
-
   title: string = '';
   description: string = '';
- 
 
-  constructor(private note: NoteService) { }
+  constructor(private note: NoteService) {}
 
-  ngOnInit() { }
+  @Output() noteCreated = new EventEmitter<any>();
 
   onSubmit() {
-    //  console.log(this.title);
-    //  console.log(this.description);
-    // token: any;
     let data = {
       title: this.title,
       description: this.description,
-    }
-    // console.log(data)
-    // this.token = localStorage.getItem('token');
-    // console.log(" add note data ", data,);
+    };
     if (this.title && this.description) {
       this.note.addNotes(data).subscribe((response: any) => {
         console.log(response);
-        let message = "note created successful";
+        let message = 'note created successfully';
         console.log(message);
-        window.location.reload() 
+        //here we emit the new note data to the parent component
+        this.noteCreated.emit(data); 
+        this.title = ''; // Clear input fields
+        this.description = '';
+        this.isSecondCardOpen = !this.isSecondCardOpen;
       });
     }
   }
 
   onButtonClick() {
     this.onSubmit();
-    this.isSecondCardOpen = !this.isSecondCardOpen
+    this.isSecondCardOpen = !this.isSecondCardOpen;
   }
 }
