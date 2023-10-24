@@ -5,11 +5,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
+import { ArchiveComponent } from './components/dashboard/sidenavContent/archive/archive.component';
 
 const routes: Routes = [
-  // {
-  //   path : '',redirectTo:'/login',pathMatch:'full'
-  // },
   {
     path : '', component:LoginComponent,
   },
@@ -20,7 +18,11 @@ const routes: Routes = [
     path: 'dashboard',component:DashboardComponent,
     children:[
       {
-        path:"notes",component:GetAllNotesComponent,
+        path:"",component:GetAllNotesComponent,
+      },
+      {
+        path:"archive",component:ArchiveComponent,
+        
       }
     ]
   },

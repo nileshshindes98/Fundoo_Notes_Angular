@@ -31,6 +31,10 @@ import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.c
 import { DisplayNotesComponent } from './components/display-notes/display-notes.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { CardFooterComponent } from './components/card-footer/card-footer.component';
+import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ArchiveComponent } from './components/dashboard/sidenavContent/archive/archive.component';
+import { TrashComponent } from './components/dashboard/sidenavContent/trash/trash.component';
 
 
 @NgModule({
@@ -44,6 +48,9 @@ import { CardFooterComponent } from './components/card-footer/card-footer.compon
     GetAllNotesComponent,
     DisplayNotesComponent,
     CardFooterComponent,
+    DialogboxComponent,
+    ArchiveComponent,
+    TrashComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -62,8 +69,8 @@ import { CardFooterComponent } from './components/card-footer/card-footer.compon
      MatFormFieldModule, MatSelectModule, MatButtonModule,
    
     MatToolbarModule,
-    
    
+    MatDialogModule,
     MatListModule,
   ],
   providers: [],
