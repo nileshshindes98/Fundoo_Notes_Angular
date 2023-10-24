@@ -30,4 +30,7 @@ constructor(media: MediaMatcher, private router: Router) {
     this.router.navigateByUrl('dashboard/archive')
   }
 
+  trash(){
+    this.router.navigateByUrl('dashboard/trash')
+  }
 }

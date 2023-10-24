@@ -40,4 +40,16 @@ export class CardFooterComponent {
       console.log(data, 'note is Unarchived');
     });
   }
+
+  delete() {
+    console.log(this.noteId);
+    let data = {
+      noteIdList: [this.noteId],
+      isDeleted: true
+    }
+    this.note.deleteNotes(data).subscribe((data: any) => {
+      console.log("Deleted Successfully", data);
+  
+    });
+  }
 }

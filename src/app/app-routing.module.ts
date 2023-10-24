@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { GetAllNotesComponent } from './components/get-all-notes/get-all-notes.component';
 import { ArchiveComponent } from './components/dashboard/sidenavContent/archive/archive.component';
+import { TrashComponent } from './components/dashboard/sidenavContent/trash/trash.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
       {
         path:"archive",component:ArchiveComponent,
         
+      },
+      {
+        path:"trash",component:TrashComponent,
       }
     ]
   },
