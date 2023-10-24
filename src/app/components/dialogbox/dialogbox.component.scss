@@ -1,0 +1,27 @@
+.mainBlock input {
+  background-color: white;
+  border-color: white;
+  width: 100%;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+}
+
+.mainBlock input:focus {
+  outline: none;
+}
+
+.mainBlock {
+  height: auto;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+button:active {
+  background-color: #e5e5e5;
+  border-radius: 10px;
+}

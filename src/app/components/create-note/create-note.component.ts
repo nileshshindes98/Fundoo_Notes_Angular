@@ -8,6 +8,8 @@ import { NoteService } from '../../service/noteService/note.service';
 })
 export class CreateNoteComponent {
   isSecondCardOpen: boolean = false;
+  isCreateNoteComponent = true;
+
   title: string = '';
   description: string = '';
 

@@ -1,0 +1,26 @@
+<div class="mainBlock">
+
+    <mat-card style="width: auto;">
+        <mat-card-content>
+
+            <div fxLayout="row" fxLayoutAlign="space-between" class="title">
+                <input placeholder="Title" [(ngModel)]="title">
+
+            </div>
+
+            <br>
+
+            <div class="description">
+                <input [(ngModel)]="description" placeholder="Note">
+            </div>
+
+            <br>
+            <div style="display: flex;justify-content: space-between;align-content: center;">
+                <app-card-footer ></app-card-footer>
+
+                <button class="close-note" id="close" (click)=updateNote()>Close</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>
