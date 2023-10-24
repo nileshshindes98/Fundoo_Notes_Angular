@@ -8,12 +8,14 @@ import { NoteService } from 'src/app/service/noteService/note.service';
 })
 export class GetAllNotesComponent implements OnInit {
   constructor(private note: NoteService) {}
-  token: any;
   notesArray: any = [];
 
   ngOnInit(): void {
-    this.note.GetallNotes(this.token).subscribe((notesData: any) => {
+    this.note.GetallNotes().subscribe((notesData: any) => {
       this.notesArray = notesData.data.data.reverse();
+      this.notesArray=this.notesArray.filter((noteData:any)=>{
+        return noteData.isDeleted === false && noteData.isArchived === false;
+      });
     });
   }
 

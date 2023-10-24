@@ -1,61 +1,66 @@
-<!-- <div class="mat-card-2-icon">
-    <div class="mat-card-2-left-icon">
-        <img src="../../../assets/remainder.svg" alt="">
-<img src="../../../assets/collaborator.svg" alt="">  
-<img src="../../../assets/colorpallate.svg" alt="">
-<img src="../../../assets/addImage.svg" alt="">
-<img src="../../../assets/archive.svg" alt="">
-        <i class="fa-solid fa-caret-down fa-2xl" [matMenuTriggerFor]="menu"></i>
+<div class="container">
+  <div class="icon-container">
+    <span class="left">
+      <button>
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/remainder.svg" alt="" />
+        </div>
+      </button>
+      <button>
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/collaborator.svg" alt="" />
+        </div>
+      </button>
+      <button>
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/colorpallate.svg" alt="" />
+        </div>
+      </button>
+      <button>
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/addImage.svg" alt="" />
+        </div>
+      </button>
+      <button (click)="archive()" *ngIf="from !== 'archive'">
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/archive.svg" alt="" />
+        </div>
+      </button>
+      <button (click)="unarchive()">
+        <div class="icon" *ngIf="from == 'archive'">
+          <img class="icon-Img" src="../../../assets/unarchive.svg" alt="" />
+        </div>
+      </button>
 
+      <button [matMenuTriggerFor]="menu">
         <mat-menu #menu="matMenu">
+          <ng-container *ngIf="isCreateNoteComponent">
             <button mat-menu-item>Add Drawing</button>
             <button mat-menu-item>Add Label</button>
+          </ng-container>
+          <ng-container *ngIf="!isCreateNoteComponent">
+            <button mat-menu-item>Delete</button>
+          </ng-container>
         </mat-menu>
-    </div>
-    <button *ngIf="from == 'create'" mat-stroked-button (click)="onButtonClick()">close</button>
-</div> -->
+        <div class="icon">
+          <img
+            class="more-icon-Img"
+            src="../../../assets/moreIcon.svg"
+            alt=""
+          />
+        </div>
+      </button>
+    </span>
 
-<div class="container">
-    <div class="icon-container">
-        <span class="left">
-            <button>
-                <div class="icon">
-                    <img class="icon-Img" src="../../../assets/remainder.svg" alt="">
-                </div>
-            </button>
-            <button>
-                <div class="icon">
-                    <img class="icon-Img" src="../../../assets/collaborator.svg" alt="">
-                </div>
-            </button>
-            <button>
-                <div class="icon">
-                    <img class="icon-Img" src="../../../assets/colorpallate.svg" alt="">
-                </div>
-            </button>
-            <button>
-                <div class="icon">
-                    <img class="icon-Img" src="../../../assets/addImage.svg" alt="">
-                </div>
-            </button>
-            <button>
-                <div class="icon">
-                    <img class="icon-Img" src="../../../assets/archive.svg" alt="">
-                </div>
-            </button>
-            <button [matMenuTriggerFor]="menu">
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Add Drawing</button>
-                    <button mat-menu-item>Add Label</button>
-                </mat-menu>
-                <div class="icon">
-                    <img class="more-icon-Img" src="../../../assets/moreIcon.svg" alt="">
-                </div>
-            </button>
-        </span>
-
-        <span>
-            <button id="close" *ngIf="from == 'create'" mat-stroked-button (click)="onButtonClick()">close</button>
-        </span>
-    </div>
+    <span>
+      <button
+        id="close"
+        *ngIf="from == 'create'"
+        mat-stroked-button
+        (click)="onButtonClick()"
+      >
+        close
+      </button>
+    </span>
+  </div>
 </div>
