@@ -1,6 +1,6 @@
 <div class="container">
   <div class="icon-container">
-    <span class="left">
+    <span class="left" *ngIf="from !== 'trash'">
       <button>
         <div class="icon">
           <img class="icon-Img" src="../../../assets/remainder.svg" alt="" />
@@ -60,6 +60,18 @@
         (click)="onButtonClick()"
       >
         close
+      </button>
+    </span>
+    <span class="right" *ngIf="from == 'trash'">
+      <button (click)="deleteForever()">
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/deleteForever.svg" alt="" />
+        </div>
+      </button>
+      <button (click)="restoreDelete()">
+        <div class="icon">
+          <img class="icon-Img" src="../../../assets/restoreDelete.svg" alt="" />
+        </div>
       </button>
     </span>
   </div>

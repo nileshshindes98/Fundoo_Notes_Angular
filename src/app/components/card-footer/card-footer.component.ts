@@ -52,4 +52,26 @@ export class CardFooterComponent {
   
     });
   }
+
+  restoreDelete(){
+    let data ={
+      noteIdList: [this.noteId],
+      isDeleted: false
+    }
+    this.note.deleteNotes(data).subscribe((data:any)=>{
+      console.log("restore deleted note",data);
+      
+    })
+  }
+
+  deleteForever(){
+    let data ={
+      noteIdList: [this.noteId],
+      isDeleted: true
+    }
+    this.note.deleteForever(data).subscribe((data:any)=>{
+      console.log("Forever Deleted a note ",data);
+      
+    })
+  }
 }
