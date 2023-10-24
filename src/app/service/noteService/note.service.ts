@@ -45,8 +45,15 @@ export class NoteService {
       this.options
     )
   }
+  GetallArchiveNotes() {
+    return this.httpservice.GetService('notes/getArchiveNotesList', this.options)
+  }
 
-  GetallArchiveNotes(){
-    return this.httpservice.GetService('notes/getArchiveNotesList',this.options)
+  deleteNotes(deleteData: any) {
+    return this.httpservice.PostService('/notes/trashNotes/', deleteData, true, this.options)
+  }
+
+  deleteForever(deleteData: any) {
+    return this.httpservice.PostService('/notes/deleteForeverNotes', deleteData, true, this.options)
   }
 }
