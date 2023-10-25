@@ -13,7 +13,7 @@ export class CardFooterComponent {
   @Input() from;
   @Input() isCreateNoteComponent: boolean;
   @Input() noteData : any; 
-
+@Output() onColorchange = new EventEmitter();
   notesArray: any;
 
   onButtonClick() {
@@ -48,33 +48,25 @@ export class CardFooterComponent {
     console.log(data);
     this.note.changeColor(data).subscribe(
       (response: any) => {
-        // this.color.emit()
+        //here we emit the selected color
+        this.onColorchange.emit(color); 
         console.log('Response of setColour', response);
       }
     );
 
   }
 
-  archive() {
+  archive(isArchived) {
     let data = {
       noteIdList: [this.noteId],
-      isArchived: true,
+      isArchived: isArchived,
     };
     this.note.archiveService(data).subscribe((data: any) => {
       console.log(data, 'note is Archived');
       if(data.data.success){
-        this.note.GetallNotes().subscribe({})
+        // this.note.GetallNotes().subscribe(res=>{res})
+        window.location=window.location
       }
-    });
-  }
-
-  unarchive() {
-    let data = {
-      noteIdList: [this.noteId],
-      isArchived: false,
-    };
-    this.note.archiveService(data).subscribe((data: any) => {
-      console.log(data, 'note is Unarchived');
     });
   }
 

@@ -12,7 +12,7 @@ export class DisplayNotesComponent {
   isCreateNoteComponent = false;
   @Input() allNotes: any = [];
   @Input() calledFrom: string = '';
-  
+  @Input()selectedColor :string;
   constructor(public note: NoteService, public dialog: MatDialog) {}
 
   openDialog(note: any) {
@@ -24,4 +24,5 @@ export class DisplayNotesComponent {
       this.allNotes = result.data.data.reverse();
     });
   }
+  //do archivefunction  api like dilogref 
 }

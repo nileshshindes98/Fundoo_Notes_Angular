@@ -1,8 +1,8 @@
 <div *ngFor="let note of allNotes">
 
-  <mat-card mat-button>
+  <mat-card mat-button [ngStyle]="{'background-color': note.color}">
     <mat-card-header (click)="openDialog(note)">{{ note.title }}</mat-card-header>
     <mat-card-content (click)="openDialog(note)">{{ note.description }}</mat-card-content>
-    <app-card-footer  [from]="calledFrom"  [noteId]="note.id" [isCreateNoteComponent]="isCreateNoteComponent" ></app-card-footer>
+    <app-card-footer (archive)="archivefunction" [noteData]="note" [from]="calledFrom"  [noteId]="note.id" [isCreateNoteComponent]="isCreateNoteComponent" ></app-card-footer>
   </mat-card>
 </div>
