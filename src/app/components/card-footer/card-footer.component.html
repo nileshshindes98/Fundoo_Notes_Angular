@@ -11,11 +11,21 @@
           <img class="icon-Img" src="../../../assets/collaborator.svg" alt="" />
         </div>
       </button>
-      <button>
+
+      <button [matMenuTriggerFor]="colorPalette">
         <div class="icon">
           <img class="icon-Img" src="../../../assets/colorpallate.svg" alt="" />
         </div>
       </button>
+      <mat-menu #colorPalette="matMenu">
+        <div class="colorPaletteHorizontal">
+          <div class="colorButton" *ngFor="let color of colors" (click)="setColor(color.code)">
+            <button mat-mini-fab [style.background]="color.code"></button>
+          </div>
+        </div>
+      </mat-menu>
+      
+
       <button>
         <div class="icon">
           <img class="icon-Img" src="../../../assets/addImage.svg" alt="" />
@@ -42,7 +52,7 @@
             <button mat-menu-item (click)="delete()">Delete</button>
           </ng-container>
         </mat-menu>
-        <div class="icon">
+        <div>
           <img
             class="more-icon-Img"
             src="../../../assets/moreIcon.svg"

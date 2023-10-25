@@ -12,6 +12,7 @@ export class CardFooterComponent {
   @Output() onClose = new EventEmitter();
   @Input() from;
   @Input() isCreateNoteComponent: boolean;
+  @Input() noteData : any; 
 
   notesArray: any;
 
@@ -21,6 +22,39 @@ export class CardFooterComponent {
 
   constructor(private note: NoteService) { }
 
+  colors: Array<any> = [
+    { code: '#ffffff', name: 'white' },
+    { code: '#faafa8', name: 'red' },
+    { code: '#f39f76', name: 'orange' },
+    { code: '#fff8b8', name: 'yellow' },
+    { code: '#e2f6d3', name: 'green' },
+    { code: '#b4ddd3', name: 'teal' },
+    { code: '#d4e4ed', name: 'Blue' },
+    { code: '#aeccdc', name: 'darkblue' },
+    { code: '#d3bfdb', name: 'purple' },
+    { code: '#f6e2dd', name: 'pink' },
+    { code: '#e9e3d4', name: 'brown' },
+    { code: '#efeff1', name: 'grey' },
+  ];
+
+
+  setColor(color: any) {
+    this.noteData.color = color;
+    console.log('color', color);
+    let data = {
+      color: color,
+      noteIdList: [this.noteId],
+    }
+    console.log(data);
+    this.note.changeColor(data).subscribe(
+      (response: any) => {
+        // this.color.emit()
+        console.log('Response of setColour', response);
+      }
+    );
+
+  }
+
   archive() {
     let data = {
       noteIdList: [this.noteId],
@@ -28,6 +62,9 @@ export class CardFooterComponent {
     };
     this.note.archiveService(data).subscribe((data: any) => {
       console.log(data, 'note is Archived');
+      if(data.data.success){
+        this.note.GetallNotes().subscribe({})
+      }
     });
   }
 

@@ -32,10 +32,6 @@ button:active {
     border-radius: 50px;
 }
 
-#close {}
-
-span {}
-
 .left {
     display: flex;
     justify-content: space-between;
@@ -45,3 +41,31 @@ span {}
 .right{
     display: flex;
 }
+
+
+.pop {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: white;
+    max-width: 170px;
+    margin-left: 5px;
+  }
+  .color-box{
+    display: flex;
+  }
+  .colorButton {
+    margin-right: 1px;
+    white-space: 2px;
+  }
+  .colorPaletteHorizontal{
+    display: flex;
+  width: 100%;
+  align-items: center;
+
+}
+.colorPaletteHorizontal button {
+    margin: 0 4px;
+
+  }
+
