@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/service/noteService/note.service';
 
 @Component({
@@ -9,6 +9,10 @@ import { NoteService } from 'src/app/service/noteService/note.service';
 export class GetAllNotesComponent implements OnInit {
   constructor(private note: NoteService) {}
   notesArray: any = [];
+  selectedColor :string;
+  onColorchange(color:string){
+    this.selectedColor=color;
+  }
 
   ngOnInit(): void {
     this.note.GetallNotes().subscribe((notesData: any) => {
