@@ -1,70 +1,82 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="example-toolbar">
-
-    <div style="display: flex;align-items: center; ">
-
+    <div style="display: flex; align-items: center">
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png" alt="" />
-      <h1 class="example-app-name">Fundoo Notes</h1>
-
+      <img
+        src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+        alt=""
+      />
+      <h1 class="example-app-name">Fundoo</h1>
     </div>
 
-    <input type="search" placeholder="Search...">
+    <input type="search" [(ngModel)]="searchText" (input)="applySearch()" placeholder="Search..." />
+
 
     <div class="app-bar-3rd-div">
-      <img class="icon-img" src="../../../assets/refresh.svg" alt="">
-      <img class="icon-img" src="../../../assets/listView.svg" alt="">
-      <img class="icon-img" src="../../../assets/setting.svg" alt="">
+      <img class="icon-img" src="../../../assets/refresh.svg" alt="" />
+      <img class="icon-img" src="../../../assets/listView.svg" alt="" />
+      <img class="icon-img" src="../../../assets/setting.svg" alt="" />
 
-      <i class="fa-sharp fa-solid fa-circle-user fa-lg" style="color: #7C7C7C;" [matMenuTriggerFor]="menu"></i>
+      <i
+        class="fa-sharp fa-solid fa-circle-user fa-lg"
+        style="color: #7c7c7c"
+        [matMenuTriggerFor]="menu"
+      ></i>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="logOutFunction">Sign Out</button>
+        <button mat-menu-item (click)="(logOutFunction)">Sign Out</button>
       </mat-menu>
     </div>
-
   </mat-toolbar>
-
 
   <!-- ----------------------------------------sidenav & main-content---------------------------->
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56" style="border: none;">
-      <mat-nav-list style="width: 18vw;">
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      style="border: none"
+    >
+      <mat-nav-list style="width: 18vw">
         <div class="side-nav-content" routerLink="/dashboard">
-          <img id="side-nav-icon" src="../../../assets/noteIcon.svg" alt="">
+          <img id="side-nav-icon" src="../../../assets/noteIcon.svg" alt="" />
           <p id="side-nav-text">Notes</p>
         </div>
 
         <div class="side-nav-content">
-          <img id="side-nav-icon" src="../../../assets/remainderIcon.svg" alt="">
+          <img
+            id="side-nav-icon"
+            src="../../../assets/remainderIcon.svg"
+            alt=""
+          />
           <p id="side-nav-text">Remainders</p>
         </div>
 
         <div class="side-nav-content">
-          <img id="side-nav-icon" src="../../../assets/editLabels.svg" alt="">
+          <img id="side-nav-icon" src="../../../assets/editLabels.svg" alt="" />
           <p id="side-nav-text">Edit lables</p>
         </div>
 
         <div class="side-nav-content" (click)="archive()">
-          <img id="side-nav-icon" src="../../../assets/archive.svg" alt="">
+          <img id="side-nav-icon" src="../../../assets/archive.svg" alt="" />
           <p id="side-nav-text">Archive</p>
         </div>
 
         <div class="side-nav-content" (click)="trash()">
-          <img id="side-nav-icon" src="../../../assets/bin.svg" alt="">
+          <img id="side-nav-icon" src="../../../assets/bin.svg" alt="" />
           <p id="side-nav-text">Bin</p>
         </div>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content style="background-color: rgb(248, 248, 248);">
-
-
+    <mat-sidenav-content style="background-color: rgb(248, 248, 248)">
       <router-outlet></router-outlet>
-
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

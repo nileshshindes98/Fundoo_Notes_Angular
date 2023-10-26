@@ -91,3 +91,9 @@ h1.example-app-name {
 .icon-img{
   opacity: 0.71;
 }
+
+@media (max-width: 800px) {
+  mat-sidenav {
+    width: 30vw;
+  }
+}

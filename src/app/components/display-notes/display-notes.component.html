@@ -1,4 +1,5 @@
-<div *ngFor="let note of allNotes">
+
+<div *ngFor="let note of allNotes | filterNotes:searchText">
 
   <mat-card mat-button [ngStyle]="{'background-color': note.color}">
     <mat-card-header (click)="openDialog(note)">{{ note.title }}</mat-card-header>

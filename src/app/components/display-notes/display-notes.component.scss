@@ -1,16 +1,41 @@
 mat-card {
-    width:20vw;
-    height: auto;
+    width:238px;
+    height: 128px;
     margin: 7px 10px;
-    border-color: #5f5d5d;
+    border-color: #e0e0e0;
+    position: relative;
+   border-radius: 8px;
 }
 
-.mat-card-icon {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0% 5.5%;
-    margin: 3vh 0vw;
-    font-size: smaller;
-    color: #5f5d5d;
+
+mat-card-header{
+    letter-spacing: .00625em;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
 }
+mat-card-content{
+    letter-spacing: .01428571em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    color: #202124;
+    margin: 6% 0%;
+}
+app-card-footer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1;
+    transition: display 0.3s;
+    background-color: transparent;
+  }
+  
+mat-card:hover app-card-footer {
+    display: block;
+  }
