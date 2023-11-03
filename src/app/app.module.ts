@@ -35,6 +35,7 @@ import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ArchiveComponent } from './components/dashboard/sidenavContent/archive/archive.component';
 import { TrashComponent } from './components/dashboard/sidenavContent/trash/trash.component';
+import { FilterNotesPipe } from './service/searchNote/filter-notes.pipe';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { TrashComponent } from './components/dashboard/sidenavContent/trash/tras
     DialogboxComponent,
     ArchiveComponent,
     TrashComponent,
+    FilterNotesPipe,
   ],
   imports: [
     AppRoutingModule,
