@@ -11,7 +11,7 @@ import { NoteService } from 'src/app/service/noteService/note.service';
 export class DialogboxComponent implements OnInit {
   public title: any;
   public description: any;
-
+  notesArray: any = [];
   constructor(
     private noteService: NoteService,
     public dialogRef: MatDialogRef<DialogboxComponent>,
@@ -36,11 +36,19 @@ export class DialogboxComponent implements OnInit {
     };
     this.noteService.updateNoteService(request).subscribe((result: any) => {
       console.log(result);
-      if (result.data.success) {
-        this.noteService.GetallNotes().subscribe(res => {
+      if (result.data.success ) {
+        this.noteService.GetallNotes().subscribe((res: any) => {
+          this.notesArray=res.data.data.reverse();
+          
           this.dialogRef.close(res);
         })
       }
+    
+      //here we change condition filter
+      // this.notesArray=res.data.data.reverse();
+      // this.notesArray = this.notesArray.filter((res:any)=>{
+      //   return res.isDeleted === false && res.isArchived === false
+      // })
     });
   }
 }

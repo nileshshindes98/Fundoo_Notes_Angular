@@ -1,71 +1,81 @@
 .container {
-    padding: 0% 1%;
+margin: 0px 12px;
 }
 
 .icon-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .icon {
-    padding: 0% 1.5%;
+  padding: 0% 1.5%;
 }
 
 .icon-Img {
-    opacity: 0.71;
+  opacity: 0.71;
+}
+
+.icon-Img-unarchive {
+  opacity: 0.71;
+  margin: 10px 5px;
+
 }
 
 .more-icon-Img {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 button {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
 }
 
 button:active {
-    background-color: #e5e5e5;
-    border-radius: 50px;
+  background-color: #e5e5e5;
+  border-radius: 50px;
 }
 
 .left {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    // border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  // border: 1px solid black;
 }
-.right{
-    display: flex;
+
+.right {
+  display: flex;
+
 }
 
 
 .pop {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    background-color: white;
-    max-width: 170px;
-    margin-left: 5px;
-  }
-  .color-box{
-    display: flex;
-  }
-  .colorButton {
-    margin-right: 1px;
-    white-space: 2px;
-  }
-  .colorPaletteHorizontal{
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: white;
+  max-width: 170px;
+  margin-left: 5px;
+}
+
+.color-box {
+  display: flex;
+}
+
+.colorButton {
+  margin-right: 1px;
+  white-space: 2px;
+}
+
+.colorPaletteHorizontal {
+  display: flex;
   width: 100%;
   align-items: center;
 
 }
+
 .colorPaletteHorizontal button {
-    margin: 0 4px;
+  margin: 0 4px;
 
-  }
-
+}

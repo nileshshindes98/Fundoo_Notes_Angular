@@ -31,18 +31,20 @@
           <img class="icon-Img" src="../../../assets/addImage.svg" alt="" />
         </div>
       </button>
-      <button (click)="archive()" *ngIf="from !== 'archive'">
+
+      <button (click)="archive(true)" *ngIf="from !== 'archive'">
         <div class="icon">
           <img class="icon-Img" src="../../../assets/archive.svg" alt="" />
         </div>
       </button>
-      <button (click)="unarchive()">
-        <div class="icon" *ngIf="from == 'archive'">
-          <img class="icon-Img" src="../../../assets/unarchive.svg" alt="" />
-        </div>
-      </button>
 
-      <button [matMenuTriggerFor]="menu">
+    
+        <div (click)="archive(false)" class="icon" *ngIf="from =='archive'">
+          <img class="icon-Img-unarchive" src="../../../assets/unarchive.svg" alt="" />
+        </div>
+  
+  
+      <button  [matMenuTriggerFor]="menu">
         <mat-menu #menu="matMenu">
           <ng-container *ngIf="isCreateNoteComponent">
             <button mat-menu-item>Add Drawing</button>

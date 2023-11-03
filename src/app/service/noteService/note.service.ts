@@ -37,6 +37,10 @@ export class NoteService {
     );
   }
 
+  changeColor(data:any){
+    return this.httpservice.PostService('/notes/changesColorNotes', data, true, this.options);
+  }
+
   archiveService(data: any) {
     return this.httpservice.PostService(
       'notes/archiveNotes',

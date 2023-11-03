@@ -10,14 +10,14 @@
         </mat-card-content>
     </mat-card>
 
-    <mat-card class="mat-card-2" *ngIf="isSecondCardOpen">
+    <mat-card class="mat-card-2" *ngIf="isSecondCardOpen"  [style.background]="selectedColor">
         <div class="mat-card-2-title">
             <input [(ngModel)]="title" placeholder="Title" />
             <i class="fa-solid fa-thumbtack fa-xl" style="color: #5f5d5d; font-size: medium"></i>
         </div>
 
-        <input [(ngModel)]="description" class="mat-card-2-description" placeholder="Take a note.." />
+        <textarea [(ngModel)]="description" class="mat-card-2-description" placeholder="Take a note.."></textarea>
 
-        <app-card-footer [isCreateNoteComponent]="isCreateNoteComponent" from="create" (onClose)="onButtonClick()"></app-card-footer>
+        <app-card-footer [noteData]="note" [isCreateNoteComponent]="isCreateNoteComponent" from="create" (onClose)="onButtonClick()"></app-card-footer>
     </mat-card>
 </div>

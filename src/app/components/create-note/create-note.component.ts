@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NoteService } from '../../service/noteService/note.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { NoteService } from '../../service/noteService/note.service';
   styleUrls: ['./create-note.component.scss'],
 })
 export class CreateNoteComponent {
+  @Input() selectedColor:string;
   isSecondCardOpen: boolean = false;
   isCreateNoteComponent = true;
 
