@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/service/noteService/note.service';
-import { SearchTextService } from 'src/app/service/search-text.service';
 //here searchText service are injected
 @Component({
   selector: 'app-get-all-notes',
@@ -8,36 +7,47 @@ import { SearchTextService } from 'src/app/service/search-text.service';
   styleUrls: ['./get-all-notes.component.scss'],
 })
 export class GetAllNotesComponent implements OnInit {
-  constructor(private note: NoteService,private searchTextService: SearchTextService) {}
+  constructor(private _noteService: NoteService) {}
   //below are declare property
   notesArray: any = [];
-  selectedColor: string;
   searchText: string = '';
-
-  onColorchange(color: string) {
-    this.selectedColor = color;
-  }
+  calledFrom: string = '';
 
   ngOnInit(): void {
-    this.note.GetallNotes().subscribe((notesData: any) => {
-      this.notesArray = notesData.data.data.reverse();
-      this.notesArray = this.notesArray.filter((noteData: any) => {
-        return noteData.isDeleted === false && noteData.isArchived === false;
+    this._noteService.noteListSubject.subscribe(res => {
+      this.notesArray = res.reverse().filter((noteData: any) => {
+        this.calledFrom = window.location.pathname.replace('/dashboard/', '');
+        if (this.calledFrom == 'trash') {
+          return noteData.isDeleted;
+        } else if (this.calledFrom == 'archive') {
+          return !noteData.isDeleted && noteData.isArchived;
+        } else {
+          return !noteData.isDeleted && !noteData.isArchived;
+        }
       });
+    });
 
-      // Subscribe to searchText changes
-      this.searchTextService.searchText$.subscribe((searchText) => {
-        this.searchText = searchText;
-        this.filterNotes(); 
-      });
+    this.getAllNotes();
+
+    // Subscribe to searchText changes
+    this._noteService.searchTextSource.subscribe((searchText) => {
+      this.searchText = searchText;
+      this.filterNotes(); 
+    });
+  }
+
+  getAllNotes() {
+    this._noteService.GetallNotes().subscribe((res: any) => {
+      this._noteService.updateNotesData(res.data.data);
     });
   }
 
   onNoteCreated(newNote: any) {
-    this.notesArray.push(newNote);
+    this.notesArray.unshift(newNote);
   }
+
    // Function to filter notes based on the search text
-   filterNotes() {
+  filterNotes() {
     if (this.searchText) {
       this.notesArray = this.notesArray.filter((note: any) => {
         return (
@@ -47,12 +57,7 @@ export class GetAllNotesComponent implements OnInit {
       });
     } else {
       // If searchText is empty, show all notes
-      this.note.GetallNotes().subscribe((notesData: any) => {
-        this.notesArray = notesData.data.data.reverse();
-        this.notesArray = this.notesArray.filter((noteData: any) => {
-          return noteData.isDeleted === false && noteData.isArchived === false;
-        });
-      });
+      this.getAllNotes();
     }
   }
 }

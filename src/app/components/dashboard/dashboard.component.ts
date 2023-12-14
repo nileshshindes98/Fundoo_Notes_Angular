@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchTextService } from 'src/app/service/search-text.service';
+import { NoteService } from 'src/app/service/noteService/note.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,12 +9,13 @@ import { SearchTextService } from 'src/app/service/search-text.service';
 })
 export class DashboardComponent {
   searchText: string = '';
-  logOutFunction() {
-    localStorage.removeItem('token');
-  }
   mobileQuery: MediaQueryList;
 
-  constructor(media: MediaMatcher, private router: Router,private SearchTextService:SearchTextService) {
+  constructor(
+    media: MediaMatcher,
+    private router: Router,
+    private _noteService: NoteService
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
   }
 
@@ -30,6 +31,17 @@ export class DashboardComponent {
 
   // here we updating the searchText and triggering a change.
   applySearch() {
-    this.SearchTextService.setSearchText(this.searchText);
+    this._noteService.setSearchText(this.searchText);
+  }
+
+  logOutFunction() {
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+  }
+
+  refreshNotes() {
+    this._noteService.GetallNotes().subscribe((res: any) => {
+      this._noteService.updateNotesData(res.data.data);
+    });
   }
 }

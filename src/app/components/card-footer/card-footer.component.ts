@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-// import { CreateNoteComponent } from '../create-note/create-note.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoteService } from 'src/app/service/noteService/note.service';
 
 @Component({
@@ -9,18 +9,21 @@ import { NoteService } from 'src/app/service/noteService/note.service';
 })
 export class CardFooterComponent {
   @Input() noteId: any;
-  @Output() onClose = new EventEmitter();
   @Input() from;
   @Input() isCreateNoteComponent: boolean;
-  @Input() noteData : any; 
-@Output() onColorchange = new EventEmitter();
+  @Input() noteData: any;
+  @Output() onColorchange = new EventEmitter();
+  @Output() onClose = new EventEmitter();
   notesArray: any;
 
   onButtonClick() {
     this.onClose.emit(true);
   }
 
-  constructor(private note: NoteService) { }
+  constructor(
+    private _noteService: NoteService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   colors: Array<any> = [
     { code: '#ffffff', name: 'white' },
@@ -37,70 +40,60 @@ export class CardFooterComponent {
     { code: '#efeff1', name: 'grey' },
   ];
 
-
   setColor(color: any) {
-    this.noteData.color = color;
-    console.log('color', color);
-    let data = {
-      color: color,
-      noteIdList: [this.noteId],
+    if (this.noteId) {
+      this.noteData.color = color;
+      const data = {
+        color: color,
+        noteIdList: [this.noteId],
+      };
+      this._noteService.changeColor(data).subscribe((response: any) => {
+        this.onColorchange.emit(color);
+      });
+    } else {
+      this.onColorchange.emit(color);
     }
-    console.log(data);
-    this.note.changeColor(data).subscribe(
-      (response: any) => {
-        //here we emit the selected color
-        this.onColorchange.emit(color); 
-        console.log('Response of setColour', response);
-      }
-    );
-
   }
 
   archive(isArchived) {
-    let data = {
+    const data = {
       noteIdList: [this.noteId],
       isArchived: isArchived,
     };
-    this.note.archiveService(data).subscribe((data: any) => {
-      console.log(data, 'note is Archived');
-      if(data.data.success){
-        // this.note.GetallNotes().subscribe(res=>{res})
-        window.location=window.location
+    this._noteService.archiveService(data).subscribe((data: any) => {
+      if (data.data.success) {
+        this._snackBar.open(( isArchived ? 'note archived successfully' : 'note unarchived successfully'), 'close', { duration: 1500 });
+        this.getAllNotes();
       }
     });
   }
 
-  delete() {
-    console.log(this.noteId);
-    let data = {
-      noteIdList: [this.noteId],
-      isDeleted: true
-    }
-    this.note.deleteNotes(data).subscribe((data: any) => {
-      console.log("Deleted Successfully", data);
-  
+  getAllNotes() {
+    this._noteService.GetallNotes().subscribe((res: any) => {
+      this._noteService.updateNotesData(res.data.data);
     });
   }
 
-  restoreDelete(){
-    let data ={
+  delete(isDeleted) {
+    const data = {
       noteIdList: [this.noteId],
-      isDeleted: false
-    }
-    this.note.deleteNotes(data).subscribe((data:any)=>{
-      console.log("restore deleted note",data);
-      
-    })
+      isDeleted: isDeleted,
+    };
+    this._noteService.deleteNotes(data).subscribe((data: any) => {
+      this._snackBar.open(isDeleted ? 'note deleted successfully' : 'note restored successfully',
+        'close', { duration: 1500 });
+      this.getAllNotes();
+    });
   }
 
-  deleteForever(){
-    let data ={
+  deleteForever() {
+    let data = {
       noteIdList: [this.noteId],
-      isDeleted: true
-    }
-    this.note.deleteForever(data).subscribe((data:any)=>{
-      console.log("Forever Deleted a note ",data);
-      
-    })
+      isDeleted: true,
+    };
+    this._noteService.deleteForever(data).subscribe((data: any) => {
+      this._snackBar.open('note deleted forever', 'close', { duration: 1500 });
+      this.getAllNotes();
+    });
   }
 }

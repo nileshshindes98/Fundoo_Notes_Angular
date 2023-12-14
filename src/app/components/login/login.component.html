@@ -21,7 +21,7 @@
   <mat-form-field  appearance="outline">
     <mat-label>Enter your email</mat-label>
     <input formControlName="email" matInput placeholder="pat@example.com" required>
-    <mat-error></mat-error>
+    <mat-error>email is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -30,12 +30,13 @@
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error>password is required</mat-error>
   </mat-form-field>
 </form>
 
   <div class="login-button" >
     <a routerLink="/resetPassword">Forget Password</a>
-    <button routerLink="/dashboard" mat-raised-button color="primary" (click)="onSubmit()" >Login</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()" >Login</button>
   </div>
 <a routerLink='/signup'>Create Account</a>
 </div>

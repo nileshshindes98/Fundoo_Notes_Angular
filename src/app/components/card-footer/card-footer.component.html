@@ -51,7 +51,7 @@
             <button mat-menu-item>Add Label</button>
           </ng-container>
           <ng-container *ngIf="!isCreateNoteComponent">
-            <button mat-menu-item (click)="delete()">Delete</button>
+            <button mat-menu-item (click)="delete(true)">Delete</button>
           </ng-container>
         </mat-menu>
         <div>
@@ -80,7 +80,7 @@
           <img class="icon-Img" src="../../../assets/deleteForever.svg" alt="" />
         </div>
       </button>
-      <button (click)="restoreDelete()">
+      <button (click)="delete(false)">
         <div class="icon">
           <img class="icon-Img" src="../../../assets/restoreDelete.svg" alt="" />
         </div>

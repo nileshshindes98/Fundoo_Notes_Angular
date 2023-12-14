@@ -32,10 +32,5 @@ export class DisplayNotesComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogboxComponent, {
       data: note,
     });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.allNotes = result.data.data.reverse();
-    });
   }
-  //do archivefunction  api like dilogref
 }

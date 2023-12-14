@@ -1,3 +1,3 @@
-<app-create-note (noteCreated)="onNoteCreated($event)" [selectedColor]="selectedColor"></app-create-note>
-<app-display-notes [allNotes]="notesArray" [selectedColor]="selectedColor" [searchText]="searchText"
+<app-create-note *ngIf="calledFrom == '/dashboard'" (noteCreated)="onNoteCreated($event)"></app-create-note>
+<app-display-notes [allNotes]="notesArray" [calledFrom]="calledFrom" [searchText]="searchText"
 style="display: flex; flex-wrap: wrap;justify-content: center;align-items: center;width: auto;"></app-display-notes>

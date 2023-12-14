@@ -15,7 +15,7 @@
 
 
     <div class="app-bar-3rd-div">
-      <img class="icon-img" src="../../../assets/refresh.svg" alt="" />
+      <img class="icon-img" (click)="refreshNotes()" src="../../../assets/refresh.svg" alt="" />
       <img class="icon-img" src="../../../assets/listView.svg" alt="" />
       <img class="icon-img" src="../../../assets/setting.svg" alt="" />
 
@@ -25,7 +25,7 @@
         [matMenuTriggerFor]="menu"
       ></i>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="(logOutFunction)">Sign Out</button>
+        <button mat-menu-item (click)="logOutFunction()">Sign Out</button>
       </mat-menu>
     </div>
   </mat-toolbar>

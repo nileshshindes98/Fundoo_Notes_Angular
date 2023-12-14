@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'filterNotes'
 })
+// @todo y used
 export class FilterNotesPipe implements PipeTransform {
   transform(notes: any[], searchText: string): any[] {
     if (!notes || !searchText) {

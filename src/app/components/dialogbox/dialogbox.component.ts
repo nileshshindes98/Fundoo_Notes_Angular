@@ -17,7 +17,6 @@ export class DialogboxComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogboxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    console.log(data);
     this.title = data.title;
     this.description = data.description;
   }
@@ -28,6 +27,10 @@ export class DialogboxComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  updateColor(event) {
+    this.data.color = event;
+  }
+
   updateNote() {
     let request = {
       noteId: this.data.id,
@@ -35,11 +38,9 @@ export class DialogboxComponent implements OnInit {
       description: this.description,
     };
     this.noteService.updateNoteService(request).subscribe((result: any) => {
-      console.log(result);
       if (result.data.success ) {
         this.noteService.GetallNotes().subscribe((res: any) => {
-          this.notesArray=res.data.data.reverse();
-          
+          this.noteService.updateNotesData(res.data.data);
           this.dialogRef.close(res);
         })
       }
